@@ -6,8 +6,6 @@ Yummy Twitter is a simple PHP oAuth tool that you can use to communicate with th
 
 I just finished writing it today couple of hours, currently it handles the oAuth requests and returns an oauth_token and oauth_token_secret which you can use to make API calls to Twitter such as for posting tweets, reading tweets etc.
 
-I will add the possibility to making other APIs calls easily via Yummy Twitter such as posting tweets, reading timeline etc, as I go along and will add comments to the code too.
-
 **Before you get started,**
 
  1. Before you get started make sure you register a new application on twitter by going to [Twitter app](https://apps.twitter.com/), and get the consumer key and consumer key secret of your app.
@@ -16,5 +14,24 @@ I will add the possibility to making other APIs calls easily via Yummy Twitter s
 
 After setting these variables you are good to go.
 
-![Oauth LOGO](http://farm3.static.flickr.com/2074/1529124811_aad3ecabf6_o.png)
- 
+**How to make API calls**
+
+Making api calls is easy using Yummy Twitter. Now you can make 'GET' or 'POST' requests. Use the **make_request** function to make API requests.
+
+The syntax is make_request(method, parameters, url)
+
+Method can be 'get' or 'post'.
+Parameters are the necessary parameters for the request passed as an array.
+URL is the part of the URL listed as in the documentation. For example if you are posting a tweet to twitter the URL should be 'statuses/update'
+
+_This example shows how to post a tweet using Yummy Twitter_
+
+```
+  $status = "Posted using Yummy Twitter";
+  $parameters = array('status' => $status);
+  $request = make_request('POST', $parameters , 'statuses/update');
+  print_r($request);
+
+```
+
+Same can be done to make a GET request.
