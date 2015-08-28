@@ -6,10 +6,12 @@
   require_once('../build/functions.php');
 
   if (isset($_SESSION['access_token'])) {
-    $status = "Maybe he'll finally find his keys. #peterfalk";
-    $parameters = array('ststus' => $status, );
+    $status = "Hacked Raspberry Pi turned into artificial pancreas http://www.businessinsider.com/hacked-raspberry-pi-artificial-pancreas-2015-8";
 
-    $request = make_request('post', $parameters ,'statuses/update');
+    $user_id = $_SESSION['access_token']['user_id'];
+
+    $parameters = array('status' => $status);
+    $request = make_request('POST', $parameters , 'statuses/update');
     print_r($request);
   }
   else {
